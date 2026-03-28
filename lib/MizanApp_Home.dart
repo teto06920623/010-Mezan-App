@@ -1,21 +1,24 @@
-// ignore_for_file: deprecated_member_use, camel_case_types, file_names
+// ignore_for_file: avoid_unnecessary_containers, file_names, unused_import
+
 import 'package:flutter/material.dart';
+import 'package:mizanappmaterial/MizanApp_Log.dart';
 
-class MizanApp_Login extends StatefulWidget {
-  const MizanApp_Login({super.key});
-
+class MizanappHome extends StatefulWidget {
+  final String userName;
+  const MizanappHome({super.key, required this.userName});
   @override
-  State<MizanApp_Login> createState() => _MizanApp_LoginState();
+  State<MizanappHome> createState() => _MizanappHomeState();
 }
 
-class _MizanApp_LoginState extends State<MizanApp_Login> {
+class _MizanappHomeState extends State<MizanappHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFFEF1E0),
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFEF1E0),
+        scrolledUnderElevation: 0,
         title: Center(
           child: Text(
             "ميزان",
@@ -27,92 +30,128 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
           ),
         ),
       ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 80,
+                    margin: const EdgeInsets.only(right: 40, top: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xFFB1BE94),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        " مرحبًا بك في ميزان! يا بشمهندس${widget.userName}.",
+                        style: TextStyle(fontSize: 18, fontFamily: 'ReadexPro'),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    top: -35,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/logo (2).png',
+                        height: 60,
+                        width: 30,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
 
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Center(
-              child: SizedBox(
-                width: 200,
-                child: Image.asset("assets/images/login.gif"),
-              ),
-            ),
-            // اسم المستخدم
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "اسم المستخدم",
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            // الايميل
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "الايميل",
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            //الراتب الشهري
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "الراتب الشهري",
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            //الرصيد البنكي
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "الرصيد البنكي",
-                border: OutlineInputBorder(),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            //اختيار الدوله
-            DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: "الدولة",
-                border: OutlineInputBorder(),
-              ),
-              items: [
-                DropdownMenuItem(value: "السعودية", child: Text("السعودية")),
-                DropdownMenuItem(value: "مصر", child: Text("مصر")),
-                DropdownMenuItem(value: "الامارات", child: Text("الامارات")),
-              ],
-              onChanged: (value) {},
-            ),
-            SizedBox(height: 20),
-            // زر التسجيل
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green),
-                padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              Container(
+                width: double.infinity,
+                height: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFF55A45E),
                 ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "حساب تحويل العملات بالدولار",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Lemonada',
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Colors.white,
+                          child: Image(
+                            image: AssetImage('assets/images/dolar.png'),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              onPressed: () {},
-              child: Text(
-                "تسجيل",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'ReadexPro',
-                  color: Colors.black,
+              SizedBox(height: 10),
+              Container(
+                width: double.infinity,
+                height: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFF55A45E),
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "حساب تحويل العملات باليورو",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Lemonada',
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 40,
+                          child: Image(
+                            image: AssetImage('assets/images/aqsat.jpg'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

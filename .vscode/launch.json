@@ -8,7 +8,7 @@
             "name": "mizanappmaterial",
             "request": "launch",
             "type": "dart",
-            "program": "lib/MizanApp_main.dart"
+            "program": "lib/main.dart"
         }
     ]
 }
