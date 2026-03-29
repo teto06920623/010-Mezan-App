@@ -208,7 +208,6 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                         );
                       },
                     ).then((_) {
-                      // 2. السهم يرجع يبص لتحت لما القايمة تقفل بأي شكل
                       setState(() {
                         _isCountryMenuOpen = false;
                       });
