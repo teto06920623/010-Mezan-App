@@ -1,97 +1,68 @@
-# 010-Mezan-App: Your Personal Financial Balance Manager
+<div align="center">
+  <img src="assets/images/logo (2).png" alt="Mizan Logo" width="100"/>
+  <h1>💰 Mizan (ميزان)</h1>
+  <p><b>Your Smart Personal Financial Balance Manager</b></p>
+  
+  [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+  [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
+  [![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)]()
+  
+  <p><i>Empowering users to track, manage, and optimize their daily finances.</i></p>
+</div>
 
-A modern Flutter application designed to empower users with robust personal financial management capabilities. Named "ميزان" (Mizan), which translates to "balance" or "scale" in Arabic, this app aims to provide a clear overview and control over personal finances, starting with a streamlined user registration and financial profiling process.
+---
 
-## ✨ Features
-
-*   **User Profile Setup**: Facilitates easy onboarding where users can create a financial profile by inputting their username, email, monthly salary, and bank balance.
-*   **Localized Experience**: Fully localized for Arabic-speaking users, featuring an intuitive right-to-left (RTL) layout and custom Arabic fonts for an authentic experience.
-*   **Country Selection**: Allows users to specify their country from a predefined list (e.g., Saudi Arabia, Egypt, UAE), enabling potential future region-specific financial insights.
-*   **Modern UI with Material Design**: Built using Flutter's Material Design principles, ensuring a responsive, visually appealing, and consistent user interface across devices.
-*   **Rich Asset Integration**: Incorporates custom imagery, such as an animated GIF for the login screen, and dedicated font assets to enhance the visual appeal and user engagement.
-
-## 📸 Screenshots
+## 🎥 Application Showcase
 
 <div align="center">
-  <table style="border: none; border-collapse: collapse;">
+  <table style="border-collapse: separate; border-spacing: 0; border: 3px solid #7A9176; border-radius: 15px; background-color: #FEF1E0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <tr>
-      <td align="center" style="border: none;">
-        <img src="assets/screenshot_1.png" width="250" alt="Screenshot 1" />
-        <br /><br /><sub><strong>Registration/Login Screen</strong></sub>
+      <td align="center" style="padding: 15px;">
+        <video src="https://github.com/user-attachments/assets/8a60aa70-b73a-472a-bf0f-139ba7bc44cd" width="280" controls style="border-radius: 10px;"></video>
+        <br/><br/>
+        <sub><b>A comprehensive walkthrough of Mizan's UI and Core Features</b></sub>
       </td>
     </tr>
   </table>
 </div>
 
-## 🚀 Getting Started
+## 🚀 Overview
 
-This section provides comprehensive instructions on how to set up and run the `010-Mezan-App` project locally for development and testing.
+**Mizan** (Arabic for "Balance" or "Scale") is a comprehensive, meticulously crafted Flutter application tailored for Arabic-speaking users. It bridges the gap between complex financial tracking and everyday usability, offering a beautifully designed interface powered by robust underlying architecture.
 
-### Prerequisites
+Whether it's calculating live currency conversions, tracking monthly installments, or automatically allocating salary segments using the proven 50/30/20 budgeting rule, Mizan is engineered to keep your financial life perfectly scaled.
 
-Before you begin, ensure you have the following installed on your development machine:
+## ✨ Core Features
 
-*   **Flutter SDK**: Refer to the [official Flutter documentation](https://flutter.dev/docs/get-started/install) for installation instructions specific to your operating system.
-*   **Dart SDK**: Included automatically with your Flutter installation.
-*   **Git**: For cloning the project repository.
+*   **📊 Smart Budgeting Allocation:** Automatically divides the user's total salary into Needs (50%), Wants (30%), and Savings (20%) with dynamic, interactive circular progress indicators.
+*   **💱 Real-Time Currency Conversion:** Integrated with the `er-api` via Dio to fetch live USD-based global exchange rates, allowing instant conversions across 19 supported currencies.
+*   **📅 Installments Tracker:** A complete CRUD-capable interface for users to add, edit, track, and delete their upcoming financial obligations and monthly installments.
+*   **🔐 Localized Profile Management:** Features a secure, customized user profile interface, strictly localized with RTL (Right-to-Left) layouts and specialized Arabic typography (ReemKufi, Lemonada).
 
-### Installation
+## 🛠️ Tech Stack & Architecture
 
-1.  **Navigate to the Project Directory**:
-    Open your terminal or command prompt and navigate to the root directory of the `010-Mezan-App` project.
-
-2.  **Fetch Dependencies**:
-    Run the following command to download all necessary Dart and Flutter packages:
-    ```bash
-    flutter pub get
-    ```
-
-3.  **Run the Application**:
-    To launch the application on a connected device, emulator, or simulator:
-    ```bash
-    flutter run -t lib/MizanApp_main.dart
-    ```
-    *(Note: The `-t lib/MizanApp_main.dart` flag explicitly specifies the entry point, aligning with the project's VS Code launch configuration.)*
+*   **Framework:** Flutter & Dart
+*   **State Management:** Ephemeral State (StatefulWidgets)
+*   **Networking:** `dio` for secure and rapid API consumption.
+*   **Localization:** `flutter_localizations` for native RTL alignment and cultural formatting.
+*   **UI/UX:** Custom Material Design implementations, `Stack` for layered layouts, and `ClipRRect` for seamless media rendering.
 
 ## 📁 Project Structure
-
-```
-.
-├── .vscode/                 # VS Code configuration files (e.g., launch settings)
+```text
+mizanappmaterial/
 ├── assets/
-│   ├── fonts/               # Custom Arabic fonts used throughout the application
-│   └── images/              # Image assets, including the login.gif
+│   ├── fonts/               # Custom Arabic fonts (ReemKufi, ReadexPro, etc.)
+│   └── images/              # Application assets, icons, and state GIFs
 ├── lib/
-│   ├── MizanApp_Home.dart   # Defines the MizanApp_Login screen for user registration/setup
-│   └── MizanApp_main.dart   # The main entry point for the Flutter application
-├── analysis_options.yaml    # Dart static analysis rules and linter configurations
-├── pubspec.yaml             # Project dependencies, metadata, asset declarations, and font configurations
-└── README.md                # This project documentation
-```
-
-## 🛠️ Technologies Used
-
-*   **Flutter**: A robust UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
-*   **Dart**: The client-optimized programming language developed by Google, used for building Flutter applications.
-*   **`flutter_localizations`**: A Flutter package essential for internationalization and localization, enabling comprehensive Arabic language support and RTL layouts.
-
-## 🤝 Contributing
-
-We welcome contributions to the `010-Mezan-App` project! If you have suggestions for improvements, new features, or bug fixes, please follow these steps:
-
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request, detailing your changes and their purpose.
-
-## 📜 License
-
-Distributed under the MIT License. See the project repository for more details.
-
-## 📧 Contact
-
-For any inquiries or feedback, please reach out:
-
-[Your Name/Team Name] - [your.email@example.com]
-Project Link: [https://github.com/your-username/010-Mezan-App](https://github.com/your-username/010-Mezan-App) (Please replace with actual repository link)
+│   ├── Models/
+│   │   ├── api_service.dart # Dio-based REST API service
+│   │   └── currency_model.dart # JSON Serialization models
+│   ├── screens/             # UI Components
+│   │   ├── Conversion_currency.dart
+│   │   ├── Expenses_Screen.dart
+│   │   ├── Installments_Screen.dart
+│   │   ├── MizanApp_Home.dart
+│   │   ├── MizanApp_Log.dart
+│   │   └── Profile_Screen.dart
+│   └── main.dart            # Application entry point
+└── pubspec.yaml             # Dependencies and configuration
