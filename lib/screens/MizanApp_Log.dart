@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print, unused_field, deprecated_member_use, camel_case_types, file_names
 import 'package:flutter/material.dart';
-import 'package:mizanappmaterial/MizanApp_Home.dart';
+import 'package:mizanappmaterial/screens/MizanApp_Home.dart';
 
 class MizanApp_Login extends StatefulWidget {
   const MizanApp_Login({super.key});
@@ -11,16 +11,22 @@ class MizanApp_Login extends StatefulWidget {
 
 class _MizanApp_LoginState extends State<MizanApp_Login> {
   final _formKey = GlobalKey<FormState>();
+
+  
   final TextEditingController userNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController salaryController = TextEditingController();
+  final TextEditingController balanceController = TextEditingController();
+
   String? selectedCountry;
   bool _isCountryMenuOpen = false;
   bool _isSalaryHidden = true;
   bool _isBalanceHidden = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: AppBar(
         backgroundColor: Colors.white,
         scrolledUnderElevation: 0,
@@ -35,7 +41,6 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
           ),
         ),
       ),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -50,7 +55,7 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                   ),
                 ),
 
-                // اسم المستخدم
+                
                 TextFormField(
                   controller: userNameController,
                   decoration: InputDecoration(
@@ -64,10 +69,11 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: 10),
-                // الايميل
+
+                
                 TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: "الايميل",
                     border: OutlineInputBorder(),
@@ -79,16 +85,16 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: 10),
-                //الراتب الشهري
+
+                
                 TextFormField(
+                  controller: salaryController,
                   obscureText: _isSalaryHidden,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: "الراتب الشهري",
                     border: OutlineInputBorder(),
-
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isSalaryHidden
@@ -110,10 +116,11 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: 10),
-                //الرصيد البنكي
+
+                
                 TextFormField(
+                  controller: balanceController,
                   obscureText: _isBalanceHidden,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -140,15 +147,14 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: 10),
 
+                
                 InkWell(
                   onTap: () {
                     setState(() {
                       _isCountryMenuOpen = true;
                     });
-
                     showDialog(
                       context: context,
                       builder: (context) {
@@ -240,7 +246,7 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                 ),
                 SizedBox(height: 20),
 
-                // زر التسجيل
+                
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green),
@@ -258,8 +264,13 @@ class _MizanApp_LoginState extends State<MizanApp_Login> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              MizanappHome(userName: userNameController.text),
+                          builder: (context) => MizanappHome(
+                            userName: userNameController.text,
+                            email: emailController.text,
+                            salary: salaryController.text,
+                            balance: balanceController.text,
+                            country: selectedCountry ?? "مصر",
+                          ),
                         ),
                       );
                     } else {

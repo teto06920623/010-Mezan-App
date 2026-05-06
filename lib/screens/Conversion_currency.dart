@@ -82,7 +82,7 @@ class _ConversionCurrencyState extends State<ConversionCurrency> {
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(),
-            ) // لو لسه بيحمل اعرض دايرة
+            ) 
           : RefreshIndicator(
               onRefresh: getRatesFromApi,
               child: SingleChildScrollView(
@@ -248,11 +248,13 @@ class _ConversionCurrencyState extends State<ConversionCurrency> {
                         ],
                       ),
                       SizedBox(height: 20),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                            width: 150,
+                            width:
+                                100, 
                             child: Center(
                               child: Text(
                                 "إلى:  👈",
@@ -264,105 +266,114 @@ class _ConversionCurrencyState extends State<ConversionCurrency> {
                               ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                _isCountryMenuOpen = true;
-                              });
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      child: Container(
-                                        width: 190,
-                                        margin: const EdgeInsets.only(
-                                          left: 15,
-                                          bottom: 15,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xFFB0BFA5),
-                                          borderRadius: BorderRadius.circular(
-                                            15,
+                          Expanded(
+                            
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _isCountryMenuOpen = true;
+                                });
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: Container(
+                                          width: 190,
+                                          margin: const EdgeInsets.only(
+                                            left: 15,
+                                            bottom: 15,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFB0BFA5),
+                                            borderRadius: BorderRadius.circular(
+                                              15,
+                                            ),
+                                          ),
+                                          child: ListView(
+                                            shrinkWrap: true,
+                                            children:
+                                                [
+                                                  "الدولار الأمريكي (USD)",
+                                                  "اليورو (EUR)",
+                                                  "الجنيه الإسترليني (GBP)",
+                                                  "الين الياباني (JPY)",
+                                                  "اليوان الصيني (CNY)",
+                                                  "الدولار الكندي (CAD)",
+                                                  "الدولار الأسترالي (AUD)",
+                                                  "الفرنك السويسري (CHF)",
+                                                  "الريال السعودي (SAR)",
+                                                  "الدرهم الإماراتي (AED)",
+                                                  "الدينار الكويتي (KWD)",
+                                                  "الريال القطري (QAR)",
+                                                  "الدينار البحريني (BHD)",
+                                                  "الريال العماني (OMR)",
+                                                  "الجنيه المصري (EGP)",
+                                                  "الليرة التركية (TRY)",
+                                                  "الروبل الروسي (RUB)",
+                                                  "البيزو المكسيكي (MXN)",
+                                                  "الروبية الهندية (INR)",
+                                                ].map((country) {
+                                                  return ListTile(
+                                                    title: Text(
+                                                      country,
+                                                      textAlign:
+                                                          TextAlign.right,
+                                                    ),
+                                                    onTap: () {
+                                                      setState(() {
+                                                        fromCountry = country;
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                  );
+                                                }).toList(),
                                           ),
                                         ),
-                                        child: ListView(
-                                          shrinkWrap: true,
-                                          children:
-                                              [
-                                                "الدولار الأمريكي (USD)",
-                                                "اليورو (EUR)",
-                                                "الجنيه الإسترليني (GBP)",
-                                                "الين الياباني (JPY)",
-                                                "اليوان الصيني (CNY)",
-                                                "الدولار الكندي (CAD)",
-                                                "الدولار الأسترالي (AUD)",
-                                                "الفرنك السويسري (CHF)",
-                                                "الريال السعودي (SAR)",
-                                                "الدرهم الإماراتي (AED)",
-                                                "الدينار الكويتي (KWD)",
-                                                "الريال القطري (QAR)",
-                                                "الدينار البحريني (BHD)",
-                                                "الريال العماني (OMR)",
-                                                "الجنيه المصري (EGP)",
-                                                "الليرة التركية (TRY)",
-                                                "الروبل الروسي (RUB)",
-                                                "البيزو المكسيكي (MXN)",
-                                                "الروبية الهندية (INR)",
-                                              ].map((country) {
-                                                return ListTile(
-                                                  title: Text(
-                                                    country,
-                                                    textAlign: TextAlign.right,
-                                                  ),
-                                                  onTap: () {
-                                                    setState(() {
-                                                      fromCountry = country;
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                );
-                                              }).toList(),
-                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((_) {
+                                  setState(() {
+                                    _isCountryMenuOpen = false;
+                                  });
+                                });
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      
+                                      child: Text(
+                                        fromCountry ?? "أختر العمله",
+                                        textAlign: TextAlign.right,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(fontSize: 16),
                                       ),
                                     ),
-                                  );
-                                },
-                              ).then((_) {
-                                setState(() {
-                                  _isCountryMenuOpen = false;
-                                });
-                              });
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    fromCountry ?? "أختر العمله",
-                                    textAlign: TextAlign.right,
-                                    style: const TextStyle(fontSize: 16),
-                                  ),
-                                  Icon(
-                                    _isCountryMenuOpen
-                                        ? Icons.keyboard_arrow_up
-                                        : Icons.keyboard_arrow_down,
-                                    color: Colors.grey,
-                                  ),
-                                ],
+                                    Icon(
+                                      _isCountryMenuOpen
+                                          ? Icons.keyboard_arrow_up
+                                          : Icons.keyboard_arrow_down,
+                                      color: Colors.grey,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
+
                       SizedBox(height: 20),
                       TextField(
                         controller: _amountController,
@@ -411,10 +422,10 @@ class _ConversionCurrencyState extends State<ConversionCurrency> {
                         child: Center(
                           child: Center(
                             child: Text(
-                              result, // حطينا المتغير هنا من غير "" أو $
+                              result, 
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                // ضفنا const للستايل عادي
+                                
                                 fontSize: 20,
                                 fontFamily: 'Lateef',
                                 fontWeight: FontWeight.bold,

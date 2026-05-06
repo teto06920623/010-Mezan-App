@@ -1,6 +1,6 @@
 // ignore_for_file: camel_case_types, file_names
 import 'package:flutter/material.dart';
-import 'package:mizanappmaterial/MizanApp_Log.dart';
+import 'package:mizanappmaterial/screens/MizanApp_Log.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
